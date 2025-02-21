@@ -66,9 +66,6 @@ appdata/traefik3/*
 !appdata/traefik3/tls/
 appdata/traefik3/tls/*
 !appdata/traefik3/tls/.gitkeep
-!appdata/traefik3/logs/
-appdata/traefik3/logs/*
-!appdata/traefik3/logs/.gitkeep
 !appdata/traefik3/rules
 appdata/traefik3/rules/*
 !appdata/traefik3/rules/*.example
