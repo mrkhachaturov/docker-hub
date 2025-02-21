@@ -4,12 +4,12 @@
 # - Home Server (hs) - Proxmox LXC with Ubuntu Server 22.04
 # - Media / Database Server (mds) - Proxmox LXC with Ubuntu Server 22.04
 # - Web Server (ws) - Digital Ocean VPS with Ubuntu Server 22.04
-# - Synology (ds918) - Synology DS918+
+# - Synology (ivn-nas1) - Synology DS1821+
 # - DNS / AdBlock Server (dns) - Raspberry Pi 4B with Raspberry Pi OS
 
 ########################### THIS COMPOSE FILE
-# - Synology (ds918) - Synology DS918+
-# - Prefix/suffix "ds918" refers to the above host
+# - Synology (ivn-nas1) - Synology DS918+
+# - Prefix/suffix "ivn-nas1" refers to the above host
 # - Docker version 20.10.23, build 876964a
 # - Docker Compose version v2.23.3
 
@@ -62,7 +62,7 @@ include:
 
   # CORE
   - compose/$HOSTNAME/traefik.yml
-  - compose/$HOSTNAME/socket-proxy.yml
+  # - compose/$HOSTNAME/socket-proxy.yml
   # - compose/$HOSTNAME/oauth.yml
   # - compose/$HOSTNAME/portainer.yml
   # NETWORK
