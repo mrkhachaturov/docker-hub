@@ -63,6 +63,10 @@ appdata/*
 !appdata/traefik3
 appdata/traefik3/*
 !appdata/traefik3/*.example
+!appdata/traefik3/ivn-nas1/tls/.gitkeep
+appdata/traefik3/ivn-nas1/tls/*
+!appdata/traefik3/ivn-nas1/logs/.gitkeep
+appdata/traefik3/ivn-nas1/logs/*
 !appdata/traefik3/rules
 appdata/traefik3/rules/*
 !appdata/traefik3/rules/*.example
