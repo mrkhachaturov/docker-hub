@@ -1,9 +1,9 @@
-########################### ANAND'S ENVIRONMENT
+########################### RKADMIN'S ENVIRONMENT
 # Here are my 5 Docker Hosts:
 # - Home Server (hs) - Proxmox LXC with Ubuntu Server 22.04
 # - Media / Database Server (mds) - Proxmox LXC with Ubuntu Server 22.04
 # - Web Server (ws) - Digital Ocean VPS with Ubuntu Server 22.04
-# - Synology (ds918) - Synology DS918+ 
+# - Synology (ds1821) - Synology DS1821+ 
 # - DNS / AdBlock Server (dns) - Raspberry Pi 4B with Raspberry Pi OS
 
 ########################### THIS COMPOSE FILE
