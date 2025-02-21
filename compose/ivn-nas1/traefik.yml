@@ -11,6 +11,9 @@ services:
       t3_proxy:
         ipv4_address: 192.168.90.254 # You can specify a static IP
       socket_proxy:
+      dockervlan:
+        ipv4_address: 10.1.120.205 # You can specify a static IP
+
     command: # CLI arguments
       - --global.checkNewVersion=true
       - --global.sendAnonymousUsage=true
@@ -87,7 +90,6 @@ services:
       # - CF_DNS_API_TOKEN_FILE=/run/secrets/cf_dns_api_token   
       - HTPASSWD_FILE=/run/secrets/basic_auth_credentials # HTTP Basic Auth Credentials
       - DOMAINNAME_INTERNAL
-      - DOMAINNAME_HS
     secrets:
       # - cf_dns_api_token
       - basic_auth_credentials
@@ -97,7 +99,7 @@ services:
       # HTTP Routers
       - "traefik.http.routers.traefik-rtr.entrypoints=websecure"
       - "traefik.http.routers.traefik-rtr.tls=true"
-      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_DNS` )"
+      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_INTERNAL` )"
       # Services - API
       - "traefik.http.routers.traefik-rtr.service=api@internal"
       # Healthcheck/ping
