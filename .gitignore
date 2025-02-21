@@ -10,7 +10,7 @@
 
 !docker-compose-hs.yml
 !docker-compose-mds.yml
-!docker-compose-ds918.yml
+!docker-compose-ivn-nas1.yml
 !docker-compose-ws.yml
 !docker-compose-dns.yml
 
@@ -72,12 +72,12 @@ appdata/traefik3/rules/ws/*
 !appdata/traefik3/rules/toml
 appdata/traefik3/rules/toml/*
 !appdata/traefik3/rules/toml/*.example
-!appdata/traefik3/rules/ds918
-appdata/traefik3/rules/ds918/*
-!appdata/traefik3/rules/ds918/*.example
-!appdata/traefik3/rules/ds918/tls-opts.yml
-!appdata/traefik3/rules/ds918/middlewares-*.yml
-!appdata/traefik3/rules/ds918/chain-*.yml
+!appdata/traefik3/rules/ivn-nas1
+appdata/traefik3/rules/ivn-nas1/*
+!appdata/traefik3/rules/ivn-nas1/*.example
+!appdata/traefik3/rules/ivn-nas1/tls-opts.yml
+!appdata/traefik3/rules/ivn-nas1/middlewares-*.yml
+!appdata/traefik3/rules/ivn-nas1/chain-*.yml
 !appdata/traefik3/rules/hs
 appdata/traefik3/rules/hs/*
 !appdata/traefik3/rules/hs/*.example
