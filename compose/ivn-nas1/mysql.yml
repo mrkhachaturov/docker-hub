@@ -36,12 +36,12 @@ services:
       DB_SERVER: mysql
       DB_USER: $MYSQL_USER_INT
       DB_PASS: $MYSQL_PASSWORD_INT
-      DB_DUMP_TARGET: s3://backup
+      DB_DUMP_TARGET: s3://backup/uptime
       # DB_DUMP_FREQUENCY: 60
       # DB_DUMP_BEGIN: 0100
       DB_DUMP_PRE_BACKUP_SCRIPTS: "/scripts.d/pre-backup/"
-      CRON_SCHEDULE: "0 * * * *"
-      DB_DUMP_RETENTION: 7d
+      CRON_SCHEDULE: "30 2 * * *"
+      # DB_DUMP_RETENTION: 7d
       DB_DUMP_INCLUDE: uptime
       AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_INT
       AWS_REGION: us-east-1
