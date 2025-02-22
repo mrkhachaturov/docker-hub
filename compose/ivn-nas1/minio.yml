@@ -25,14 +25,14 @@ services:
       MINIO_DOMAIN: s3.$DOMAINNAME_INTERNAL
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.s3-rtr.rule=Host(`s3.$DOMAINNAME_INTERNAL.net`)"
+      - "traefik.http.routers.s3-rtr.rule=Host(`s3.$DOMAINNAME_INTERNAL`)"
       - "traefik.http.routers.s3-rtr.service=s3-svc"
       - "traefik.http.routers.s3-rtr.entrypoints=websecure"
       - "traefik.http.services.s3-svc.loadbalancer.server.port=9000"
       - "traefik.http.routers.s3-rtr.tls=true"
       # - "traefik.http.routers.minio.middlewares=chain-no-auth@file"
 
-      - "traefik.http.routers.minio-rtr.rule=Host(`minio.$DOMAINNAME_INTERNAL.net`)"
+      - "traefik.http.routers.minio-rtr.rule=Host(`minio.$DOMAINNAME_INTERNAL`)"
       - "traefik.http.routers.minio-rtr.service=minio-svc"
       - "traefik.http.routers.minio-rtr.entrypoints=websecure"
       - "traefik.http.routers.minio-rtr.tls=true"
