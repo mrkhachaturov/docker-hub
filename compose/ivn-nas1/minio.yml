@@ -22,8 +22,8 @@ services:
       PGID: $PGID
       MINIO_ROOT_USER: $MINIO_ROOT_USER  
       MINIO_ROOT_PASSWORD: $MINIO_ROOT_PASSWORD
-      MINIO_BROWSER_REDIRECT_URL: https://minio.$DOMAINNAME_INTERNAL
-      MINIO_DOMAIN: s3.$DOMAINNAME_INTERNAL
+      MINIO_BROWSER_REDIRECT_URL: https://minio.$DOMAINNAME_INTERNAL.net
+      MINIO_DOMAIN: s3.$DOMAINNAME_INTERNAL.net
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.s3-rtr.rule=Host(`s3.$DOMAINNAME_INTERNAL.net`) || HostRegexp(`^.+\\.s3\\.${DOMAINNAME_INTERNAL}\\.net$`)"
