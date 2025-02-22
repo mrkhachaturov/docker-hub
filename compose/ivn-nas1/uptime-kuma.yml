@@ -16,8 +16,8 @@ services:
       - $DOCKERDIR/docker-hub/uptime-kuma:/app/data
     environment:
       TZ: $TZ
-      PUID: $PUID
-      PGID: $PGID
+      # PUID: $PUID
+      # PGID: $PGID
     labels:
       - "traefik.enable=true"
       # HTTP Routers
