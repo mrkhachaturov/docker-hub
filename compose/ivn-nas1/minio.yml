@@ -13,7 +13,8 @@ services:
     # ports:
     #   - "3001:3001"
     volumes:
-      - $DOCKERDIR/appdata/minio-local:/app/data
+      - $DOCKERDIR/appdata/minio-local/config:/app/data
+      - /volume1/Minio:/data  
     command: server /data --console-address ":9001"  
     environment:
       TZ: $TZ
