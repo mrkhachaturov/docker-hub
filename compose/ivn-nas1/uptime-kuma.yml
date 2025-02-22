@@ -18,6 +18,12 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID
+      UPTIME_KUMA_DB_TYPE: mariadb
+      UPTIME_KUMA_DB_HOSTNAME: mysql
+      UPTIME_KUMA_DB_PORT: 3306
+      UPTIME_KUMA_DB_NAME: uptime
+      UPTIME_KUMA_DB_USERNAME: $UPTIME_KUMA_DB_USERNAME
+      UPTIME_KUMA_DB_PASSWORD: $UPTIME_KUMA_DB_PASSWORD
     labels:
       - "traefik.enable=true"
       # HTTP Routers
