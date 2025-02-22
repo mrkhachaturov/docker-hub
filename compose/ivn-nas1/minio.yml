@@ -1,0 +1,41 @@
+services:
+  # Minio 
+  minio-local:
+    image: quay.io/minio/minio
+    container_name: minio-local
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    # profiles: ["core", "all"]
+    networks:
+      privatevlan:
+        ipv4_address: 10.1.140.251 # You can specify a static IP
+    # ports:
+    #   - "3001:3001"
+    volumes:
+      - $DOCKERDIR/appdata/minio-local:/app/data
+    command: server /data --console-address ":9001"  
+    environment:
+      TZ: $TZ
+      PUID: $PUID
+      PGID: $PGID
+      MINIO_ROOT_USER: $MINIO_ROOT_USER  
+      MINIO_ROOT_PASSWORD: $MINIO_ROOT_PASSWORD
+      MINIO_BROWSER_REDIRECT_URL: https://minio.$DOMAINNAME_INTERNAL
+      MINIO_DOMAIN: s3.$DOMAINNAME_INTERNAL
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.s3-rtr.rule=Host(`s3.$DOMAINNAME_INTERNAL.net`)"
+      - "traefik.http.routers.s3-rtr.service=s3-svc"
+      - "traefik.http.routers.s3-rtr.entrypoints=websecure"
+      - "traefik.http.services.s3-svc.loadbalancer.server.port=9000"
+      - "traefik.http.routers.s3-rtr.tls=true"
+      # - "traefik.http.routers.minio.middlewares=chain-no-auth@file"
+
+      - "traefik.http.routers.minio-rtr.rule=Host(`minio.$DOMAINNAME_INTERNAL.net`)"
+      - "traefik.http.routers.minio-rtr.service=minio-svc"
+      - "traefik.http.routers.minio-rtr.entrypoints=websecure"
+      - "traefik.http.routers.minio-rtr.tls=true"
+      - "traefik.http.services.minio-svc.loadbalancer.server.port=9001"
+
+      # - "traefik.http.routers.minio-console.middlewares=chain-no-auth@file"
