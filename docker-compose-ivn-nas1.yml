@@ -24,12 +24,12 @@ networks:
   #   ipam:
   #     config:
   #       - subnet: 192.168.91.0/24
-  t3_proxy:
-    name: t3_proxy
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.90.0/24
+  # t3_proxy:
+  #   name: t3_proxy
+  #   driver: bridge
+  #   ipam:
+  #     config:
+  #       - subnet: 192.168.90.0/24
   dockervlan:
     name: dockervlan
     driver: macvlan
@@ -38,7 +38,7 @@ networks:
     ipam:
       config:
         - subnet: 10.1.140.0/24
-          ip_range: 10.1.140.252/30
+          ip_range: 10.1.140.240/28
           gateway: 10.1.140.1
 
 ########################### SECRETS
