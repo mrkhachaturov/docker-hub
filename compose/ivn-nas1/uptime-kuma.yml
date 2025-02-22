@@ -8,12 +8,12 @@ services:
     restart: unless-stopped
     # profiles: ["core", "all"]
     networks:
-      dockervlan:
+      privatevlan:
         ipv4_address: 10.1.140.252 # You can specify a static IP
     # ports:
     #   - "3001:3001"
     volumes:
-      - $DOCKERDIR/docker-hub/uptime-kuma:/app/data
+      - $DOCKERDIR/appdata/uptime-kuma-local:/app/data
     environment:
       TZ: $TZ
       PUID: $PUID
