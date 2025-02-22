@@ -27,9 +27,9 @@ networks:
   t3_proxy:
     name: t3_proxy
     driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.90.0/24
+    # ipam:
+    #   config:
+    #     - subnet: 192.168.90.0/24
   dockervlan:
     name: dockervlan
     driver: macvlan
