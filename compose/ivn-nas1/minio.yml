@@ -26,7 +26,7 @@ services:
       MINIO_DOMAIN: s3.$DOMAINNAME_INTERNAL
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.s3-rtr.rule=Host(`s3.$DOMAINNAME_INTERNAL`) || HostRegexp(`^.+\\.s3\\.${DOMAINNAME_INTERNAL}\\.net$`)"
+      - "traefik.http.routers.s3-rtr.rule=HostRegexp(`s3.$DOMAINNAME_INTERNAL.net`,`^.+\\.s3\\.${DOMAINNAME_INTERNAL}\\.net$`)"
       - "traefik.http.routers.s3-rtr.service=s3-svc"
       - "traefik.http.routers.s3-rtr.entrypoints=websecure"
       - "traefik.http.services.s3-svc.loadbalancer.server.port=9000"
