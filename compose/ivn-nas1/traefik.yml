@@ -1,6 +1,6 @@
 services:
   # Traefik 3 - Reverse Proxy
-  traefik:
+  traefik-local:
     container_name: traefik-local
     image: traefik:v3.3
     security_opt:
