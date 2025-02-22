@@ -8,14 +8,11 @@ services:
     restart: unless-stopped
     # profiles: ["core", "all"]
     networks:
-      t3_proxy:
-      # socket_proxy:
-      # dockervlan:
-      #   ipv4_address: 10.1.140.253 # You can specify a static IP
+      dockervlan:
+        ipv4_address: 10.1.140.252 # You can specify a static IP
     # ports:
     #   - "3001:3001"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
       - $DOCKERDIR/docker-hub/uptime-kuma:/app/data
     environment:
       TZ: $TZ

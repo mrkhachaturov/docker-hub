@@ -16,22 +16,8 @@
 ########################### NETWORKS
 # You may customize the network subnets (192.168.x.0/24) below as you please.
 networks:
-  # default:
-  #   driver: bridge
-  # socket_proxy:
-  #   name: socket_proxy
-  #   driver: bridge
-  #   ipam:
-  #     config:
-  #       - subnet: 192.168.91.0/24
-  t3_proxy:
-    name: t3_proxy
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.90.0/24
-  dockervlan:
-    name: dockervlan
+  privatevlan:
+    name: privatevlan
     driver: macvlan
     driver_opts:
       parent: bond0.1140 #vlan 1140 
@@ -62,7 +48,7 @@ include:
 
   # CORE
   - compose/$HOSTNAME/traefik.yml
-  # - compose/$HOSTNAME/socket-proxy.yml
+  - compose/$HOSTNAME/socket-proxy.yml
   # - compose/$HOSTNAME/oauth.yml
   # - compose/$HOSTNAME/portainer.yml
   # NETWORK
