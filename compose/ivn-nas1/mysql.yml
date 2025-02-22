@@ -36,7 +36,7 @@ services:
       DB_SERVER: mysql
       DB_USER: $MYSQL_USER_INT
       DB_PASS: $MYSQL_PASSWORD_INT
-      DB_DUMP_TARGET: s3://backup/uptime
+      DB_DUMP_TARGET: s3://backup
       # DB_DUMP_FREQUENCY: 60
       # DB_DUMP_BEGIN: 0100
       DB_DUMP_PRE_BACKUP_SCRIPTS: "/scripts.d/pre-backup/"
