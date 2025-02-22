@@ -81,7 +81,7 @@ include:
   # MONITORING
   # - compose/$HOSTNAME/glances.yml
   # - compose/$HOSTNAME/qdirstat.yml
-  - compose/$HONSTMAME/uptime-kuma.yml
+  - compose/$HOSTNAME/uptime-kuma.yml
   # MAINTENANCE
   # - compose/$HOSTNAME/docker-gc.yml
   # - compose/$HOSTNAME/ddns-updater.yml
