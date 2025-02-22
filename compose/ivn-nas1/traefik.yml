@@ -1,7 +1,7 @@
 services:
   # Traefik 3 - Reverse Proxy
-  traefik-local:
-    container_name: traefik-local
+  trf-int:
+    container_name: trf-int
     image: traefik:v3.3
     security_opt:
       - no-new-privileges:true
@@ -102,12 +102,12 @@ services:
       # HTTP Routers
       - "traefik.http.routers.traefik-rtr.entrypoints=websecure"
       - "traefik.http.routers.traefik-rtr.tls=true"
-      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_INTERNAL` )"
+      - "traefik.http.routers.traefik-rtr.rule=Host(`trf-int.$DOMAINNAME_INTERNAL` )"
       # Services - API
       - "traefik.http.routers.traefik-rtr.service=api@internal"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
       # Healthcheck/ping
-      #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_INTERNAL`) && Path(`/ping`)"
+      #- "traefik.http.routers.ping.rule=Host(`trf-int.$DOMAINNAME_INTERNAL`) && Path(`/ping`)"
       #- "traefik.http.routers.ping.tls=true"
       #- "traefik.http.routers.ping.service=ping@internal"
       # Middlewares
