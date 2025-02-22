@@ -102,7 +102,7 @@ services:
       # HTTP Routers
       - "traefik.http.routers.traefik-rtr.entrypoints=websecure"
       - "traefik.http.routers.traefik-rtr.tls=true"
-      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_INTERNAL` )"
+      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_INTERNAL.net` )"
       # Services - API
       - "traefik.http.routers.traefik-rtr.service=api@internal"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
