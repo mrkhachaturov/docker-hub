@@ -26,7 +26,7 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.uptime-rtr.entrypoints=websecure"
-      - "traefik.http.routers.uptime-rtr.rule=Host(`uptime.$DOMAINNAME_INTERNAL`)"
+      - "traefik.http.routers.uptime-rtr.rule=Host(`uptime.$DOMAINNAME_INTERNAL`) || Host(`status.${DOMAINNAME_INTERNAL}`)"
       - "traefik.http.routers.uptime-rtr.tls=true"
       # Middlewares
       # - "traefik.http.routers.uptime-rtr.middlewares=chain-oauth@file"
