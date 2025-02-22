@@ -23,7 +23,7 @@ services:
       MINIO_ROOT_USER: $MINIO_ROOT_USER  
       MINIO_ROOT_PASSWORD: $MINIO_ROOT_PASSWORD
       MINIO_BROWSER_REDIRECT_URL: https://minio.$DOMAINNAME_INTERNAL
-      MINIO_DOMAIN: https://s3.$DOMAINNAME_INTERNAL
+      MINIO_DOMAIN: s3.$DOMAINNAME_INTERNAL
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.s3-rtr.rule=Host(`s3.$DOMAINNAME_INTERNAL`) || HostRegexp(`{subdomain:[a-z]+}.s3.${DOMAINNAME_INTERNAL}`)"
