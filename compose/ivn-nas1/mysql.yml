@@ -39,7 +39,7 @@ services:
       DB_DUMP_TARGET: s3://dumps/uptime
       DB_DUMP_FREQUENCY: 60
       DB_DUMP_BEGIN: 0100
-      CRON_SCHEDULE: 0 * * * *
+      # CRON_SCHEDULE: 0 * * * *
       DB_DUMP_RETENTION: 7d
       DB_DUMP_INCLUDE: uptime
       AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_INT
