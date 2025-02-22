@@ -1,0 +1,31 @@
+services:
+  # Uptime Kuma
+  syncthing:
+    image: ghcr.io/louislam/uptime-kuma:2.0.0-beta.1
+    container_name: uptime-kuma
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    # profiles: ["core", "all"]
+    networks:
+      - t3_proxy
+    # ports:
+    #   - "3001:3001"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $DOCKERDIR/docker-hub/uptime-kuma:/app/data
+    environment:
+      TZ: $TZ
+      PUID: $PUID
+      PGID: $PGID
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.uptime-rtr.entrypoints=websecure"
+      - "traefik.http.routers.uptime-rtr.rule=Host(`uptime.$DOMAINNAME_INTERNAL`)"
+      - "traefik.http.routers.uptime-rtr.tls=true"
+      # Middlewares
+      # - "traefik.http.routers.uptime-rtr.middlewares=chain-oauth@file"
+      # HTTP Services
+      - "traefik.http.routers.uptime-rtr.service=syncthing-svc"
+      - "traefik.http.services.uptime-svc.loadbalancer.server.port=3001"

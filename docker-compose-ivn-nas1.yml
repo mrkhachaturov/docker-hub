@@ -18,18 +18,18 @@
 networks:
   default:
     driver: bridge
-  socket_proxy:
-    name: socket_proxy
-    driver: bridge
-    # ipam:
-    #   config:
-    #     - subnet: 192.168.91.0/24
+  # socket_proxy:
+  #   name: socket_proxy
+  #   driver: bridge
+  #   ipam:
+  #     config:
+  #       - subnet: 192.168.91.0/24
   t3_proxy:
     name: t3_proxy
     driver: bridge
-    # ipam:
-    #   config:
-    #     - subnet: 192.168.90.0/24
+    ipam:
+      config:
+        - subnet: 192.168.90.0/24
   dockervlan:
     name: dockervlan
     driver: macvlan
@@ -62,7 +62,7 @@ include:
 
   # CORE
   - compose/$HOSTNAME/traefik.yml
-  - compose/$HOSTNAME/socket-proxy.yml
+  # - compose/$HOSTNAME/socket-proxy.yml
   # - compose/$HOSTNAME/oauth.yml
   # - compose/$HOSTNAME/portainer.yml
   # NETWORK
@@ -81,6 +81,7 @@ include:
   # MONITORING
   # - compose/$HOSTNAME/glances.yml
   # - compose/$HOSTNAME/qdirstat.yml
+  - compose/$HONSTMAME/uptime-kuma.yml
   # MAINTENANCE
   # - compose/$HOSTNAME/docker-gc.yml
   # - compose/$HOSTNAME/ddns-updater.yml
