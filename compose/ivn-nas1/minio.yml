@@ -13,28 +13,38 @@ services:
     # ports:
     #   - "3001:3001"
     volumes:
-      - $DOCKERDIR/appdata/minio-local/config:/app/data
+      - ${DOCKERDIR}/appdata/minio-local/config:/app/data
       - /volume1/Minio:/data  
     command: server /data --console-address ":9001"  
     environment:
-      TZ: $TZ
-      PUID: $PUID
-      PGID: $PGID
-      MINIO_ROOT_USER: $MINIO_ROOT_USER  
-      MINIO_ROOT_PASSWORD: $MINIO_ROOT_PASSWORD
-      MINIO_BROWSER_REDIRECT_URL: https://minio.$DOMAINNAME_INTERNAL.net
-      MINIO_DOMAIN: s3.$DOMAINNAME_INTERNAL.net
-      MINIO_SERVER_URL: https://s3.$DOMAINNAME_INTERNAL.net
+      TZ: ${TZ}
+      PUID: ${PUID}
+      PGID: ${PGID}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_BROWSER_REDIRECT_URL: https://minio.${DOMAINNAME_INTERNAL}.net
+      MINIO_DOMAIN: s3.${DOMAINNAME_INTERNAL}.net
+      MINIO_SERVER_URL: https://s3.${DOMAINNAME_INTERNAL}.net
+      ## ENTRA ID
+      MINIO_IDENTITY_OPENID_CONFIG_URL: "https://login.microsoftonline.com/${ENTRA_TENANT_ID}/v2.0/.well-known/openid-configuration"
+      MINIO_IDENTITY_OPENID_CLIENT_ID: ${MINIO_ENTRA_CLIENT_ID}
+      MINIO_IDENTITY_OPENID_CLIENT_SECRET: ${MINIO_ENTRA_SECRET_ID}
+      MINIO_IDENTITY_OPENID_SCOPES: "profile openid email"
+      MINIO_IDENTITY_OPENID_CLAIM_NAME: "groups"
+      MINIO_IDENTITY_OPENID_REDIRECT_URI: "https://minio.${DOMAINNAME_INTERNAL}.net/oauth_callback"
+      MINIO_IDENTITY_OPENID_DISPLAY_NAME: "EntraAD"
+      MINIO_IDENTITY_OPENID_COMMENT: "EntraAD"
+
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.s3-rtr.rule=Host(`s3.$DOMAINNAME_INTERNAL.net`) || HostRegexp(`^.+\\.s3\\.${DOMAINNAME_INTERNAL}\\.net$`)"
+      - "traefik.http.routers.s3-rtr.rule=Host(`s3.${DOMAINNAME_INTERNAL}.net`) || HostRegexp(`^.+\\.s3\\.${DOMAINNAME_INTERNAL}\\.net$`)"
       - "traefik.http.routers.s3-rtr.service=s3-svc"
       - "traefik.http.routers.s3-rtr.entrypoints=websecure"
       - "traefik.http.services.s3-svc.loadbalancer.server.port=9000"
       - "traefik.http.routers.s3-rtr.tls=true"
       # - "traefik.http.routers.minio.middlewares=chain-no-auth@file"
 
-      - "traefik.http.routers.minio-rtr.rule=Host(`minio.$DOMAINNAME_INTERNAL.net`)"
+      - "traefik.http.routers.minio-rtr.rule=Host(`minio.${DOMAINNAME_INTERNAL}.net`)"
       - "traefik.http.routers.minio-rtr.service=minio-svc"
       - "traefik.http.routers.minio-rtr.entrypoints=websecure"
       - "traefik.http.routers.minio-rtr.tls=true"
