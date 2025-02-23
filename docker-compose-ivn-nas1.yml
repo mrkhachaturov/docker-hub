@@ -23,9 +23,9 @@ networks:
       parent: bond0.1140 #vlan 1140 
     ipam:
       config:
-        - subnet: ${1140VLAN}.0/24
-          ip_range: ${1140VLAN}240/28
-          gateway: ${1140VLAN}.1
+        - subnet: ${VLAN_1140}.0/24
+          ip_range: ${VLAN_1140}240/28
+          gateway: ${VLAN_1140}.1
 
 ########################### SECRETS
 secrets:

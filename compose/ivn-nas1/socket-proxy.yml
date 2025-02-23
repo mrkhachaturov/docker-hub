@@ -9,7 +9,7 @@ services:
     #profiles: ["core", "all"]
     networks:
       privatevlan:
-        ipv4_address: ${1140VLAN}.253 # You can specify a static IP    # privileged: true # true for VM. False for unprivileged LXC container.
+        ipv4_address: ${VLAN_1140}.253 # You can specify a static IP    # privileged: true # true for VM. False for unprivileged LXC container.
     ports:
     # - "$ZEROTIER_IP_SYNOLOGY:2375:2375" # Port 2375 should only ever get exposed to the internal network. When possible use this line.
     # I use the next line instead, as I want portainer to manage multiple docker endpoints within my home network.
