@@ -24,7 +24,7 @@ networks:
     ipam:
       config:
         - subnet: ${VLAN_1140}.0/24
-          ip_range: ${VLAN_1140}240/28
+          ip_range: ${VLAN_1140}.240/28
           gateway: ${VLAN_1140}.1
 
 ########################### SECRETS
