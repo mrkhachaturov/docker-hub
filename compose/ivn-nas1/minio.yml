@@ -9,7 +9,7 @@ services:
     # profiles: ["core", "all"]
     networks:
       privatevlan:
-        ipv4_address: 10.1.140.251 # You can specify a static IP
+        ipv4_address: ${1140VLAN}.251 # You can specify a static IP
     # ports:
     #   - "3001:3001"
     volumes:

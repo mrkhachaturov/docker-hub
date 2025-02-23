@@ -6,7 +6,7 @@ services:
       - no-new-privileges:true
     networks:
       privatevlan:
-        ipv4_address: 10.1.140.250
+        ipv4_address: ${1140VLAN}.250
     environment:
       MYSQL_DATABASE: uptime
       MYSQL_USER: $UPTIME_KUMA_DB_USERNAME
@@ -30,7 +30,7 @@ services:
       - no-new-privileges:true
     networks:
       privatevlan:
-        ipv4_address: 10.1.140.249  
+        ipv4_address: ${1140VLAN}.249  
     restart: unless-stopped
     environment:
       DB_SERVER: mysql
