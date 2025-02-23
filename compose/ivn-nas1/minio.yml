@@ -32,8 +32,8 @@ services:
       MINIO_IDENTITY_OPENID_SCOPES: "profile openid email"
       MINIO_IDENTITY_OPENID_CLAIM_NAME: "groups"
       MINIO_IDENTITY_OPENID_REDIRECT_URI: "https://minio.${DOMAINNAME_INTERNAL}.net/oauth_callback"
-      MINIO_IDENTITY_OPENID_DISPLAY_NAME: "EntraAD"
-      MINIO_IDENTITY_OPENID_COMMENT: "EntraAD"
+      MINIO_IDENTITY_OPENID_DISPLAY_NAME: "EntraID"
+      MINIO_IDENTITY_OPENID_COMMENT: "EntraID"
 
     labels:
       - "traefik.enable=true"
